@@ -12,7 +12,7 @@
 <body>
 	<div class="container">
 		<div class="row">
-			<h3>Video Pedia</h3>
+			<h1>Video Pedia</h1>
 		</div>
 	</div>
 </div>
