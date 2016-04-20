@@ -1,9 +1,10 @@
 <?php
 	include "../include/admin/header.php";
+	$currentPage = 'category';
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : Admin Panel</h1>
+		<h1>Video Pedia : Categories</h1>
 	</div>
 </div>
 <div class="row">
@@ -20,6 +21,11 @@
 ?>
 
 <script type="text/javascript">
+
+	$(document).ready(function() {
+	    $('a[href="' + this.location.pathname + '"]').parent().addClass('active');
+	});
+	
 	$(".nav a").on("click", function()
 	{
 	   $(".nav").find(".active").removeClass("active");
