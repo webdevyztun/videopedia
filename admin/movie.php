@@ -43,7 +43,7 @@
 						<a href="updatemovie.php?u=<?php echo $row['id']; ?>">
 							<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
 						Edit</a>
-						<a href="deletemovie.php?d=<?php echo $row['id']; ?>">
+						<a onclick="return confirm('Are you want deleting data')" href="deletemovie.php?d=<?php echo $row['id']; ?>">
 							<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
 						 Delete</a>
 					</td>
