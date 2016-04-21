@@ -14,5 +14,8 @@
 	</div>
 	<div class="col-sm-9 border">
 		<p>content</p>
+		<p>
+			<a href="newmovie.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span></a>
+		</p>
 	</div>
 </div>
