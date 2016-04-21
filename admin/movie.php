@@ -19,3 +19,4 @@
 		</p>
 	</div>
 </div>
+<?php include "../include/admin/header.php"; ?>
