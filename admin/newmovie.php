@@ -1,16 +1,28 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+
+	$sql = "select description from categories";
+	$category = $mysqli->query($sql);
 ?>
 <?php
 	if(isset($_POST['submit'])){
-  if($_POST['name']!=null){
-     $stmt = $mysqli->prepare("INSERT INTO movies(moviename) VALUES (?)");
-     $stmt->bind_param('s', $name);
+  if($_POST['name']!=null && $_POST['categoryname']!=null && $_POST['directedby']!=null && $_POST['producedby']!=null && $_POST['review']!=null ){
+     $stmt = $mysqli->prepare("INSERT INTO movies(moviename,categoryname,directedby,producedby,review) VALUES (?,?,?,?,?)");
+     $stmt->bind_param('sssss', $name,$categoryname,$directedby,$producedby,$review);
  
      $name = $_POST['name'];
-     
- 
+     $categoryname = $_POST['categoryname'];
+     $directedby = $_POST['directedby'];
+     $producedby = $_POST['producedby'];
+     $review = $_POST['review'];
+
+   //   echo $_POST['name'];
+ 	 // echo $_POST['categoryname'];
+ 	 //echo $_POST['directedby'];
+     //echo $_POST['producedby'];
+     //echo $_POST['review'];
+
      $stmt->execute();
  }}
 ?>
@@ -28,12 +40,48 @@
 		<p>content</p>
 
 		<form method="post" class="form-horizontal" role="form">
+			<!-- Name -->
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">Name</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="name" id="name">
 				</div>
 			</div>
+			<!-- Category Name -->
+			<div class="form-group">
+				<label for="categoryname" class="col-sm-2 control-label">Category Name</label>
+				<div class="col-sm-10">
+					<select class="form-control" name="categoryname" id="categoryname">
+						<?php 
+					      while($row = $category->fetch_assoc()) {
+					         echo "<option value = '{$row['description']}'> {$row['description']} </option>";
+					      }
+					   ?>
+					</select>					
+				</div>
+			</div>
+			<!-- Directed By -->
+			<div class="form-group">
+				<label for="directedby" class="col-sm-2 control-label">Directed By</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="directedby" id="directedby">
+				</div>
+			</div>
+			<!-- Produced By -->
+			<div class="form-group">
+				<label for="producedby" class="col-sm-2 control-label">Produced By</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="producedby" id="producedby">
+				</div>
+			</div>
+			<!-- Review -->
+			<div class="form-group">
+				<label for="review" class="col-sm-2 control-label">Review</label>
+				<div class="col-sm-10">
+					<textarea name="review" id="review" class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-2">
 					<input id="submit" name="submit" class="btn btn-primary" type="submit" value="Add">

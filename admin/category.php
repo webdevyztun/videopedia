@@ -19,31 +19,33 @@
 			<a href="newcategory.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span></a>
 		</p>
 		<table class="display table table-bordered table-stript" cellspacing="0" width="100%">
-		<thead>
+			<thead>
+				<tr>
+					<td>Description</td>
+					<td>Action</td>
+				</tr>
+			</thead>
+			<tbody>
+			<?php
+				$res = $mysqli->query("SELECT * FROM categories");
+				while ($row = $res->fetch_assoc()):				
+			?>
 			<tr>
-				<td>Description</td>
-				<td>Action</td>
+				<td width="80%"><?php echo $row['description']?></td>
+				<td>
+					<a href="updatecategory.php?u=<?php echo $row['id']; ?>">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+					Edit</a>
+					<a href="updatecategory.php?d=<?php echo $row['id']; ?>">
+						<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+					 Delete</a>
+				</td>
 			</tr>
-		</thead>
-		<tbody>
-		<?php
-			$res = $mysqli->query("SELECT * FROM categories");
-			while ($row = $res->fetch_assoc()):				
-		?>
-		<tr>
-			<td><?php echo $row['description']?></td>
-			<td>
-				<a href="updatecategory.php?u=<?php echo $row['id']; ?>">
-					<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
-				Edit</a>
-				<a href="updatecategory.php?d=<?php echo $row['id']; ?>">
-					<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
-				 Delete</a>
-			</td>
-		</tr>
-		<?php
-			endwhile;
-		?>
+			<?php
+				endwhile;
+			?>
+			</tbody>
+		</table>
 	</div>
 </div>
 <?php
