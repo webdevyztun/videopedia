@@ -7,7 +7,7 @@
 	        <li>
 	            <a href="category.php"> Categories</a>
 	        </li>   -->
-	        <li class="<?php if($currentPage =='page1'){echo 'active';}?>" ><a href="index.php">Movies</a></li>
+	        <li class="<?php if($currentPage =='page1'){echo 'active';}?>" ><a href="movie.php">Movies</a></li>
             <li class="<?php if($currentPage =='category'){echo 'active';}?>" ><a href="category.php">Categories</a></li>                    
 	    </ul>
 	</div>

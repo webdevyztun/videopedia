@@ -3,18 +3,17 @@
 	include "../include/admin/header.php";
 ?>
 <?php
-if(isset($_POST['submit']))
-{
+
+if(isset($_POST['submit'])){
   if($_POST['description']!=null){
      $stmt = $mysqli->prepare("INSERT INTO categories(description) VALUES (?)");
      $stmt->bind_param('s', $description);
  
      $description = $_POST['description'];
+     
  
      $stmt->execute();
-     header("Location: category.php");
- }
-}
+ }}
 ?>
 <div class="row">
 	<div class="col-sm-12">
