@@ -44,17 +44,22 @@ INSERT INTO `categories` VALUES ('3', 'Drama');
 INSERT INTO `categories` VALUES ('4', 'Action');
 INSERT INTO `categories` VALUES ('5', 'science');
 
-DROP TABLE IF EXISTS `movies`;
 CREATE TABLE `movies` (
   `id` int(9) NOT NULL AUTO_INCREMENT,
-  `name` varchar(255) NOT NULL,
+  `categoryname` varchar(255) DEFAULT NULL,
+  `moviename` varchar(255) NOT NULL,
   `directedby` varchar(255) DEFAULT NULL,
   `producedby` varchar(255) DEFAULT NULL,
   `review` text,
   `smallimage` text,
   `largeimage` text,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of movies
+-- ----------------------------
+INSERT INTO `movies` VALUES ('1', null, 'zootopia', null, null, null, null, null);
 
 
 

@@ -4,11 +4,11 @@
 ?>
 <?php
 	if(isset($_POST['submit'])){
-  if($_POST['description']!=null){
-     $stmt = $mysqli->prepare("INSERT INTO categories(description) VALUES (?)");
-     $stmt->bind_param('s', $description);
+  if($_POST['name']!=null){
+     $stmt = $mysqli->prepare("INSERT INTO movies(moviename) VALUES (?)");
+     $stmt->bind_param('s', $name);
  
-     $description = $_POST['description'];
+     $name = $_POST['name'];
      
  
      $stmt->execute();
