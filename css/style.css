@@ -2,3 +2,41 @@
 {
 	border: 1px solid gray;
 }
+.header
+{
+	border: 1px solid gray;
+	background: #C9C1C1;
+}
+.footer
+{
+	height: 150px;
+	border: 1px solid gray;
+	background: #C9C1C1;
+}
+
+/*Home*/
+.hm-img
+{
+	height: 150px;
+}
+.hm-data
+{
+	height: 150px;
+}
+.hm-top
+{
+	height: 150px;
+}
+/*Movie Detail*/
+.dtl-img
+{
+	height: 200px;
+}
+.dtl-p
+{
+	height: 150px;
+}
+.dtl-data
+{
+	height: 150px;
+}
