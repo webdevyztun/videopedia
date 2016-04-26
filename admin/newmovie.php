@@ -7,15 +7,67 @@
 ?>
 <?php
 	if(isset($_POST['submit'])){
-  if($_POST['name']!=null && $_POST['categoryname']!=null && $_POST['directedby']!=null && $_POST['producedby']!=null && $_POST['review']!=null ){
-     $stmt = $mysqli->prepare("INSERT INTO movies(moviename,categoryname,directedby,producedby,review) VALUES (?,?,?,?,?)");
-     $stmt->bind_param('sssss', $name,$categoryname,$directedby,$producedby,$review);
- 
-     $name = $_POST['name'];
-     $categoryname = $_POST['categoryname'];
-     $directedby = $_POST['directedby'];
-     $producedby = $_POST['producedby'];
-     $review = $_POST['review'];
+	  if($_POST['name']!=null && $_POST['categoryname']!=null && $_POST['directedby']!=null && $_POST['producedby']!=null && $_POST['review']!=null && isset($_FILES['smallimage']) && isset($_FILES['largeimage']) )
+	  	{
+	    $stmt = $mysqli->prepare("INSERT INTO movies(moviename,categoryname,directedby,producedby,review,smallimage,largeimage) VALUES (?,?,?,?,?,?,?)");
+	    $stmt->bind_param('sssssss', $name,$categoryname,$directedby,$producedby,$review,$newimage1,$newimage2);
+	 
+	    $name = $_POST['name'];
+	    $categoryname = $_POST['categoryname'];
+	    $directedby = $_POST['directedby'];
+	    $producedby = $_POST['producedby'];
+	    $review = $_POST['review'];
+
+	     // Image1
+	    $errors = array();
+		$file_name = $_FILES['smallimage']['name'];
+		$file_size = $_FILES['smallimage']['size'];
+		$file_tmp = $_FILES['smallimage']['tmp_name'];
+		$file_type = $_FILES['smallimage']['type'];
+		$file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+		$newimage1 = "smallimage_".time().rand(5, 15).".".$file_ext;
+
+		$extensions = array("jpeg","jpg","png");
+
+		if(in_array($file_ext, $extensions) === false)
+		{
+			$errors[]="extension not allowed";
+		}
+		if($file_size > 2097152)
+		{
+			$errors[]='File size must be less than 2 MB';
+		}
+
+		if(empty($errors)==true)
+		{
+			move_uploaded_file($file_tmp, "../uploads/smallimage/".$newimage1);
+			//move_uploaded_file($file_tmp,dirname(__FILE__)."/uploads/".$newimage1);
+		}
+
+		// Image2
+		$error1 = array();
+		$file1_name = $_FILES['largeimage']['name'];
+		$file1_size = $_FILES['largeimage']['size'];
+		$file1_tmp = $_FILES['largeimage']['tmp_name'];
+		$file1_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+		$newimage2 = "largeimage_".time().rand(5, 15).".".$file_ext;
+
+		if(in_array($file1_ext, $extensions)=== false)
+		{
+			$error1[]="extension not allowed, please choose a JPEG or PNG file.";
+		}
+		if(($file1_size > 2097152))
+		{
+			$error1[]='File size must be exactly 2MB';
+		}
+		if(empty($error1)==true)
+		{
+			move_uploaded_file($file1_tmp, "../uploads/largeimage/".$newimage2);
+		}
+		else
+		{
+			print_r($error1);
+		}
 
    //   echo $_POST['name'];
  	 // echo $_POST['categoryname'];
@@ -23,8 +75,9 @@
      //echo $_POST['producedby'];
      //echo $_POST['review'];
 
-     $stmt->execute();
- }}
+     	$stmt->execute();
+		 }
+	}
 ?>
 <div class="row">
 	<div class="col-sm-12">
@@ -39,7 +92,7 @@
 	<div class="col-sm-9 border">
 		<p>content</p>
 
-		<form method="post" class="form-horizontal" role="form">
+		<form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 			<!-- Name -->
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label">Name</label>
@@ -79,6 +132,20 @@
 				<label for="review" class="col-sm-2 control-label">Review</label>
 				<div class="col-sm-10">
 					<textarea name="review" id="review" class="form-control" rows="3"></textarea>
+				</div>
+			</div>
+			<!-- Image1 -->
+			<div class="form-group">
+				<label for="smallimage" class="col-sm-2 control-label">Image1</label>
+				<div class="col-sm-10">
+					<input type="file" name="smallimage" id="smallimage">
+				</div>
+			</div>
+			<!-- Image2 -->
+			<div class="form-group">
+				<label for="largeimage" class="col-sm-2 control-label">Image2</label>
+				<div class="col-sm-10">
+					<input type="file" name="largeimage" id="largeimage">
 				</div>
 			</div>
 
