@@ -5,13 +5,64 @@
 		$id = $_GET['u'];
 
 		if(isset($_POST['submit'])):
-			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,directedby=?,producedby=?,review=? WHERE id=?");
-			$stmt->bind_param('sssss',$moviename,$directedby,$producedby,$review,$id);
+			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,directedby=?,producedby=?,review=?,smallimage=?,largeimage=? WHERE id=?");
+			$stmt->bind_param('sssssss',$moviename,$directedby,$producedby,$review,$newimage1,$newimage2,$id);
 
 			$moviename = $_POST['name'];
 			$directedby = $_POST['directedby'];
 			$producedby = $_POST['producedby'];
 			$review = $_POST['review'];
+
+			 // Image1
+		    $errors = array();
+			$file_name = $_FILES['smallimage']['name'];
+			$file_size = $_FILES['smallimage']['size'];
+			$file_tmp = $_FILES['smallimage']['tmp_name'];
+			$file_type = $_FILES['smallimage']['type'];
+			$file_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+			$newimage1 = "smallimage_".time().rand(5, 15).".".$file_ext;
+
+			$extensions = array("jpeg","jpg","png");
+
+			if(in_array($file_ext, $extensions) === false)
+			{
+				$errors[]="extension not allowed";
+			}
+			if($file_size > 2097152)
+			{
+				$errors[]='File size must be less than 2 MB';
+			}
+
+			if(empty($errors)==true)
+			{
+				move_uploaded_file($file_tmp, "../uploads/smallimage/".$newimage1);
+				//move_uploaded_file($file_tmp,dirname(__FILE__)."/uploads/".$newimage1);
+			}
+
+			// Image2
+			$error1 = array();
+			$file1_name = $_FILES['largeimage']['name'];
+			$file1_size = $_FILES['largeimage']['size'];
+			$file1_tmp = $_FILES['largeimage']['tmp_name'];
+			$file1_ext = pathinfo($file_name, PATHINFO_EXTENSION);
+			$newimage2 = "largeimage_".time().rand(5, 15).".".$file_ext;
+
+			if(in_array($file1_ext, $extensions)=== false)
+			{
+				$error1[]="extension not allowed, please choose a JPEG or PNG file.";
+			}
+			if(($file1_size > 2097152))
+			{
+				$error1[]='File size must be exactly 2MB';
+			}
+			if(empty($error1)==true)
+			{
+				move_uploaded_file($file1_tmp, "../uploads/largeimage/".$newimage2);
+			}
+			else
+			{
+				print_r($error1);
+			}
 
 			if($stmt->execute()):
 					echo "<script>location.href='movie.php'</script>";
@@ -39,7 +90,7 @@
 	<div class="col-sm-9 border">
 		<p>content</p>
 
-		<form method="post" class="form-horizontal" role="form">
+		<form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 			<input type="hidden" value="<?php echo $row['id']; ?>" name="id" id="id">
 			<!-- Name -->
 			<div class="form-group">
@@ -80,6 +131,20 @@
 				<label for="review" class="col-sm-2 control-label">Review</label>
 				<div class="col-sm-10">
 					<textarea name="review" id="review" class="form-control" rows="3"><?php echo $row['review']; ?></textarea>
+				</div>
+			</div>
+			<!-- Image1 -->
+			<div class="form-group">
+				<label for="smallimage" class="col-sm-2 control-label">Image1</label>
+				<div class="col-sm-10">
+					<input type="file" name="smallimage" id="smallimage">
+				</div>
+			</div>
+			<!-- Image2 -->
+			<div class="form-group">
+				<label for="largeimage" class="col-sm-2 control-label">Image2</label>
+				<div class="col-sm-10">
+					<input type="file" name="largeimage" id="largeimage">
 				</div>
 			</div>
 
