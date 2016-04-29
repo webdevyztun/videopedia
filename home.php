@@ -2,6 +2,7 @@
 	include "include/login_check.php";
 	include "include/header.php";
 	include "include/nav.php";
+	$currentPage = 'home';
 ?>
 
 <div class="row">
