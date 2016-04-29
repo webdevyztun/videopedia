@@ -39,7 +39,7 @@
 		</div>
 	</div>
 	<!-- <div class="row"> -->
-	<div class="col-sm-12">
+	<div class="col-sm-12 dtl-lab">
 		<div class="row">
 			<div class="col-sm-3 col-sm-offset-3">
 				<label for="">Directed By</label>
