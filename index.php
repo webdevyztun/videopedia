@@ -1,6 +1,6 @@
 <?php
-	include "include/login_check.php";
-	//include "config/db.php";
+	//include "include/login_check.php";
+	include "config/db.php";
 	include "include/header.php";
 ?>
 <?php
@@ -22,6 +22,7 @@
 			if($row == 1)
 			{
 				$_SESSION['name'] = $name;
+				$login_user = $name;
 				header("location: home.php");
 			}
 			else
