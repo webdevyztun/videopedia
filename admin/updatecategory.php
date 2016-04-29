@@ -23,7 +23,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : Edit Category</h1>
+		<h1>Movie Pedia : Edit Category</h1>
 	</div>
 </div>
 <div class="row">

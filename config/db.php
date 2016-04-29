@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$mysqli = new mysqli("localhost","root","","videopedia");
 	if($mysqli->connect_errno)
 	{

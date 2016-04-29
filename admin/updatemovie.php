@@ -5,12 +5,13 @@
 		$id = $_GET['u'];
 
 		if(isset($_POST['submit'])):
-			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,directedby=?,producedby=?,review=?,smallimage=?,largeimage=? WHERE id=?");
-			$stmt->bind_param('sssssss',$moviename,$directedby,$producedby,$review,$newimage1,$newimage2,$id);
+			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,directedby=?,producedby=?,industry=?,review=?,smallimage=?,largeimage=? WHERE id=?");
+			$stmt->bind_param('ssssssss',$moviename,$directedby,$producedby,$industry,$review,$newimage1,$newimage2,$id);
 
 			$moviename = $_POST['name'];
 			$directedby = $_POST['directedby'];
 			$producedby = $_POST['producedby'];
+			$industry = $_POST['industry'];
 			$review = $_POST['review'];
 
 			 // Image1
@@ -79,7 +80,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : Edit Movies</h1>
+		<h1>Movie Pedia : Edit Movies</h1>
 	</div>
 </div>
 <div class="row">
@@ -124,6 +125,13 @@
 				<label for="producedby" class="col-sm-2 control-label">Produced By</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="producedby" id="producedby" value="<?php echo $row['producedby']; ?>">
+				</div>
+			</div>
+			<!-- Movie Industry -->
+			<div class="form-group">
+				<label for="industry" class="col-sm-2 control-label">Movie Industry</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="industry" id="industry" value="<?php echo $row['industry']; ?>">
 				</div>
 			</div>
 			<!-- Review -->

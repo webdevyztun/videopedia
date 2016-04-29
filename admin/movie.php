@@ -4,7 +4,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : Movies</h1>
+		<h1>Movie Pedia : Movies</h1>
 	</div>
 </div>
 <div class="row">

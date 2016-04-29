@@ -7,15 +7,16 @@
 ?>
 <?php
 	if(isset($_POST['submit'])){
-	  if($_POST['name']!=null && $_POST['categoryname']!=null && $_POST['directedby']!=null && $_POST['producedby']!=null && $_POST['review']!=null && isset($_FILES['smallimage']) && isset($_FILES['largeimage']) )
+	  if($_POST['name']!=null && $_POST['categoryname']!=null && $_POST['directedby']!=null && $_POST['producedby']!=null && $_POST['industry'] && $_POST['review']!=null && isset($_FILES['smallimage']) && isset($_FILES['largeimage']) )
 	  	{
-	    $stmt = $mysqli->prepare("INSERT INTO movies(moviename,categoryname,directedby,producedby,review,smallimage,largeimage) VALUES (?,?,?,?,?,?,?)");
-	    $stmt->bind_param('sssssss', $name,$categoryname,$directedby,$producedby,$review,$newimage1,$newimage2);
+	    $stmt = $mysqli->prepare("INSERT INTO movies(moviename,categoryname,directedby,producedby,industry,review,smallimage,largeimage) VALUES (?,?,?,?,?,?,?,?)");
+	    $stmt->bind_param('ssssssss', $name,$categoryname,$directedby,$producedby,$industry,$review,$newimage1,$newimage2);
 	 
 	    $name = $_POST['name'];
 	    $categoryname = $_POST['categoryname'];
 	    $directedby = $_POST['directedby'];
 	    $producedby = $_POST['producedby'];
+	    $industry = $_POST['industry'];
 	    $review = $_POST['review'];
 
 	     // Image1
@@ -81,7 +82,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : New Movies</h1>
+		<h1>Movie Pedia : New Movies</h1>
 	</div>
 </div>
 <div class="row">
@@ -95,14 +96,14 @@
 		<form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 			<!-- Name -->
 			<div class="form-group">
-				<label for="name" class="col-sm-2 control-label">Name</label>
+				<label for="name" class="col-sm-2 control-label required">Name</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="name" id="name">
 				</div>
 			</div>
 			<!-- Category Name -->
 			<div class="form-group">
-				<label for="categoryname" class="col-sm-2 control-label">Category Name</label>
+				<label for="categoryname" class="col-sm-2 control-label required">Category Name</label>
 				<div class="col-sm-10">
 					<select class="form-control" name="categoryname" id="categoryname">
 						<?php 
@@ -115,35 +116,42 @@
 			</div>
 			<!-- Directed By -->
 			<div class="form-group">
-				<label for="directedby" class="col-sm-2 control-label">Directed By</label>
+				<label for="directedby" class="col-sm-2 control-label required">Directed By</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="directedby" id="directedby">
 				</div>
 			</div>
 			<!-- Produced By -->
 			<div class="form-group">
-				<label for="producedby" class="col-sm-2 control-label">Produced By</label>
+				<label for="producedby" class="col-sm-2 control-label required">Produced By</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="producedby" id="producedby">
 				</div>
 			</div>
+			<!-- Movie Industry -->
+			<div class="form-group">
+				<label for="industry" class="col-sm-2 control-label required">Movie Industry</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="industry" id="industry">
+				</div>
+			</div>
 			<!-- Review -->
 			<div class="form-group">
-				<label for="review" class="col-sm-2 control-label">Review</label>
+				<label for="review" class="col-sm-2 control-label required">Review</label>
 				<div class="col-sm-10">
 					<textarea name="review" id="review" class="form-control" rows="3"></textarea>
 				</div>
 			</div>
 			<!-- Image1 -->
 			<div class="form-group">
-				<label for="smallimage" class="col-sm-2 control-label">Image1</label>
+				<label for="smallimage" class="col-sm-2 control-label required">Image1</label>
 				<div class="col-sm-10">
 					<input type="file" name="smallimage" id="smallimage">
 				</div>
 			</div>
 			<!-- Image2 -->
 			<div class="form-group">
-				<label for="largeimage" class="col-sm-2 control-label">Image2</label>
+				<label for="largeimage" class="col-sm-2 control-label required">Image2</label>
 				<div class="col-sm-10">
 					<input type="file" name="largeimage" id="largeimage">
 				</div>

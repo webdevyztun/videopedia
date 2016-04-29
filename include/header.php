@@ -13,9 +13,9 @@
 </head>
 <body>
 	<div class="container">
-		<div class="row">
+		<!-- <div class="row">
 			<div class="col-sm-12 header">
 				<h1>Video Pedia</h1>
 			</div>
-		</div>
+		</div> -->
 		

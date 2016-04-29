@@ -3,7 +3,7 @@
 ?>
 <div class="row">
 	<div class="col-sm-12">
-		<h1>Video Pedia : Admin Panel</h1>
+		<h1>Movie Pedia : Admin Panel</h1>
 	</div>
 </div>
 <div class="row">

@@ -1,3 +1,11 @@
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+}
+
+footer {
+    margin: 50px 0;
+}
 .border
 {
 	border: 1px solid gray;
@@ -13,24 +21,43 @@
 	border: 1px solid gray;
 	background: #C9C1C1;
 }
-
+/*Home Welcome msg*/
+.msg
+{
+	display: block;
+	margin-left: 800px;
+	font-size: 16px;
+	padding: 5px;
+}
 /*Home*/
 .hm-img
 {
-	height: 150px;
+	/*height: 150px;*/
 }
 .hm-data
 {
-	height: 150px;
+	/*height: 150px;*/
+	padding-top: 5px;
+}
+.hm-data label,.hm-data span,.hm-data a
+{
+	/*height: 150px;*/
+	padding: 5px 20px; 
 }
 .hm-top
 {
+	/*height: 150px;*/
+}
+.smallimage
+{
+	padding: 5px;
+	width: 250px;
 	height: 150px;
 }
 /*Movie Detail*/
 .dtl-img
 {
-	height: 200px;
+	/*height: 200px;*/
 }
 .dtl-p
 {
@@ -39,4 +66,25 @@
 .dtl-data
 {
 	height: 150px;
+}
+.largeimage
+{
+	/*padding: 5px;*/
+	width: 400px;
+	height: 200px;
+	margin-bottom: 10px;
+}
+.required:after { content:" *";color: red; }
+/*Report*/
+.rpt-are
+{
+	margin-top: 50px;
+	/*border: 1px solid gray;*/
+	height: 200px;
+}
+.rpt-are a
+{
+	margin:5px 0 5px 30px;
+	width: 300px;
+
 }
