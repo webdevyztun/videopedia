@@ -3,6 +3,53 @@
 	include "include/header.php";
 	include "include/nav.php";
 ?>
+<?php
+	if(isset($_POST['submit']))
+	{
+		if($_POST['name']!=null && $_POST['email']!=null && $_POST['password']!=null)
+		{
+			// $stmt = $mysqli->prepare("INSERT INTO users(name,email,`password`) VALUES (?,?,?)");
+
+			// $stmt->bind_param('sss',$name,$email,$password);
+
+			$name = $_POST['name'];
+			$email = $_POST['email'];
+			$password = md5($_POST['password']);
+
+			$checkexist = $mysqli->prepare("SELECT `name` from users WHERE `name`=?");
+
+			$checkexist->bind_param('s',$name);
+
+			$checkexist->execute();
+			$res = $checkexist->get_result();
+			//$row = $res->fetch_array(MYSQLI_ASSOC);
+			$row = $res->num_rows;
+
+			if ($row == 1) 
+			{
+				echo "User already exist";
+			}
+			else
+			{
+				// $stmt = $mysqli->prepare("INSERT INTO users(name,email,`password`) VALUES (?,?,?)");
+
+				// $stmt->bind_param('sss',$name,$email,$password);
+
+				$stmt = $mysqli->prepare("INSERT INTO users(name,email,`password`) VALUES (?,?,?)");
+
+				$stmt->bind_param('sss',$name,$email,$password);
+
+				//$stmt->execute();
+
+				if($stmt->execute() === false) 
+				{
+				  trigger_error('Wrong SQL: ' . ' Error: ' . $mysqli->error, E_USER_ERROR);
+				} 
+			}
+			
+		}
+	}
+?>
 <div class="row">
 	<div class="col-sm-12">	
 		<h1>Video Pedia : Register</h1>
