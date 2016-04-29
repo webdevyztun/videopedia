@@ -14,21 +14,21 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label required">Name</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="name" id="name">
+				<input type="text" class="form-control" name="name" id="name" required="true">
 			</div>
 		</div>
 
 		<!-- Email -->
 		<div class="form-group">
-			<label for="email" class="col-sm-2 control-label required">EMail</label>
+			<label for="email" class="col-sm-2 control-label required" required="true">EMail</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="email" id="email">
+				<input type="email" class="form-control" name="email" id="email">
 			</div>
 		</div>
 
 		<!-- Password -->
 		<div class="form-group">
-			<label for="password" class="col-sm-2 control-label required">Password</label>
+			<label for="password" class="col-sm-2 control-label required" required="true">Password</label>
 			<div class="col-sm-10">
 				<input type="password" class="form-control" name="password" id="password">
 			</div>

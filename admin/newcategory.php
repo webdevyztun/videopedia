@@ -1,6 +1,7 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+	$currentPage = 'category';
 ?>
 <?php
 
@@ -12,7 +13,12 @@ if(isset($_POST['submit'])){
      $description = $_POST['description'];
      
  
-     $stmt->execute();
+     //$stmt->execute();
+     if($stmt->execute()):
+			echo "<script>location.href='category.php'</script>";
+		else:
+			echo "<script>alert('". $stmt->error ."')</script>";
+	endif;
  }}
 ?>
 <div class="row">
@@ -21,18 +27,15 @@ if(isset($_POST['submit'])){
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
 	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
-
+	<div class="col-sm-9">
 		<form action="" method="post" class="form-horizontal" role="form">
 			<div class="form-group">
 				<label for="description" class="col-sm-2 control-label required">Description</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="description" id="description">
+					<input type="text" class="form-control" name="description" id="description" required="true">
 				</div>
 			</div>
 			<div class="form-group">

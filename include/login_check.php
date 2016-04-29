@@ -16,6 +16,6 @@
 
 	if(!isset($check_user))
 	{
-		header("Location: index.php");
+		//header("Location: index.php");
 	}
 ?>

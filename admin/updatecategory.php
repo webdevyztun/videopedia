@@ -1,6 +1,8 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+	$currentPage = 'category';
+	
 	if(isset($_GET['u'])):
 		$id = $_GET['u'];
 
@@ -27,12 +29,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
 	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
+	<div class="col-sm-9">
 		<form action="" method="post" class="form-horizontal" role="form">
 			<input type="hidden" value="<?php echo $row['id']; ?>" name="id" id="id">
 			<div class="form-group">

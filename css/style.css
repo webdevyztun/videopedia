@@ -48,11 +48,21 @@ footer {
 {
 	/*height: 150px;*/
 }
+.hm-header
+{
+	margin-top: 20px;
+}
 .smallimage
 {
-	padding: 5px;
+	/*padding: 5px;*/
 	width: 250px;
 	height: 150px;
+	border: 4px solid gray;
+	margin-bottom: 5px;
+}
+.border-btm
+{
+	border-bottom: 1px solid gray;
 }
 /*Movie Detail*/
 .dtl-img
@@ -73,6 +83,7 @@ footer {
 	width: 400px;
 	height: 200px;
 	margin-bottom: 10px;
+	border: 4px solid gray;
 }
 .required:after { content:" *";color: red; }
 /*Report*/

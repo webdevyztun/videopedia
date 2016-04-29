@@ -7,12 +7,8 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
-	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
 	</div>
 </div>
 <?php

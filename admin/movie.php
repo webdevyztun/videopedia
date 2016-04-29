@@ -1,6 +1,7 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+	$currentPage = 'movie';
 ?>
 <div class="row">
 	<div class="col-sm-12">
@@ -8,12 +9,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
 	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
+	<div class="col-sm-9">
 		<p>
 			<a href="newmovie.php" class="btn btn-primary btn-md"><span class="glyphicon glyphicon-plus"></span></a>
 		</p>

@@ -42,7 +42,7 @@
 		<div class="form-group">
 			<label for="name" class="col-sm-2 control-label">Name</label>
 			<div class="col-sm-10">
-				<input type="text" class="form-control" name="name" id="name">
+				<input type="text" class="form-control" name="name" id="name" required="true">
 			</div>
 		</div>
 
@@ -50,7 +50,7 @@
 		<div class="form-group">
 			<label for="pasword" class="col-sm-2 control-label">Password</label>
 			<div class="col-sm-10">
-				<input type="password" class="form-control" name="password" id="password">
+				<input type="password" class="form-control" name="password" id="password" required="true">
 			</div>
 		</div>
 	

@@ -1,7 +1,7 @@
 <?php
 	include "include/login_check.php";
 	include "include/header.php";
-	//include "include/nav.php";
+	include "include/nav.php";
 ?>
 <div class="row">
 	<span class="msg">
@@ -22,17 +22,17 @@
 		<div class="col-sm-4 col-sm-offset-4 border">
 			<div class="row">
 				<div class="col-sm-4">
-					<a href="#" role="button" class="btn btn-info btn-large">Hollywood</a>
+					<a href="rp1.php" role="button" class="btn btn-info btn-large">Hollywood</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<a href="#" role="button" class="btn btn-info btn-large">Cinema of China</a>
+					<a href="rp2.php" role="button" class="btn btn-info btn-large">Cinema of China</a>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-sm-4">
-					<a href="#" role="button" class="btn btn-info btn-large" >Bollywood</a>
+					<a href="rp3.php" role="button" class="btn btn-info btn-large" >Bollywood</a>
 				</div>
 			</div>	
 		</div>

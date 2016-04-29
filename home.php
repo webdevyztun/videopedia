@@ -24,7 +24,7 @@
 		while ($row = $res->fetch_assoc()):
 	?>
 	<div class="row">
-		<div class="col-sm-9 border">
+		<div class="col-sm-12 border-btm hm-header">
 			<div class="col-sm-4 hm-img">
 				<!-- <img src="uploads/largeimage/largeimage_14618609209.jpg" alt="movie"> -->
 				<img class="smallimage" src="uploads/smallimage/<?php echo $row['smallimage']; ?>" alt="movie"/>

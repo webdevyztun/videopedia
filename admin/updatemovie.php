@@ -1,18 +1,23 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+	$currentPage = 'movie';
+	
 	if(isset($_GET['u'])):
 		$id = $_GET['u'];
 
 		if(isset($_POST['submit'])):
-			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,directedby=?,producedby=?,industry=?,review=?,smallimage=?,largeimage=? WHERE id=?");
-			$stmt->bind_param('ssssssss',$moviename,$directedby,$producedby,$industry,$review,$newimage1,$newimage2,$id);
+			$stmt = $mysqli->prepare("UPDATE movies SET moviename=?,categoryname=?,directedby=?,producedby=?,industry=?,review=?,smallimage=?,largeimage=? WHERE id=?");
+			$stmt->bind_param('sssssssss',$moviename,$categoryname,$directedby,$producedby,$industry,$review,$newimage1,$newimage2,$id);
 
 			$moviename = $_POST['name'];
+			$categoryname = $_POST['categoryname'];
 			$directedby = $_POST['directedby'];
 			$producedby = $_POST['producedby'];
 			$industry = $_POST['industry'];
 			$review = $_POST['review'];
+
+			echo $categoryname;
 
 			 // Image1
 		    $errors = array();
@@ -84,13 +89,10 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
 	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
-
+	<div class="col-sm-9">
 		<form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 			<input type="hidden" value="<?php echo $row['id']; ?>" name="id" id="id">
 			<!-- Name -->
@@ -104,10 +106,15 @@
 			<div class="form-group">
 				<label for="categoryname" class="col-sm-2 control-label">Category Name</label>
 				<div class="col-sm-10">
-					<select class="form-control" name="categoryname" id="categoryname">
+					<select class="form-control" name="categoryname" id="categoryname">						
 						<?php 
 					      while($rowcat = $category->fetch_assoc()) {
-					         echo "<option value = '{$rowcat['description']}'> {$rowcat['description']} </option>";
+					      ?>
+					      <option value="<?php echo $rowcat['description']; ?>"
+					      	<?php if($rowcat['description'] == $row['categoryname'] ) echo "selected"; ?> >
+					      		<?php echo $rowcat['description']; ?>
+					      </option>
+					    <?php
 					      }
 					   ?>
 					</select>					
@@ -158,7 +165,7 @@
 
 			<div class="form-group">
 				<div class="col-sm-10 col-sm-offset-2">
-					<input id="submit" name="submit" class="btn btn-primary" type="submit" value="Add">
+					<input id="submit" name="submit" class="btn btn-primary" type="submit" value="Update">
 				</div>
 			</div>
 		</form>

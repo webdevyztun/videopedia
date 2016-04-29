@@ -1,6 +1,7 @@
 <?php
 	include "../config/db.php";
 	include "../include/admin/header.php";
+	$currentPage = 'movie';
 
 	$sql = "select description from categories";
 	$category = $mysqli->query($sql);
@@ -76,8 +77,15 @@
      //echo $_POST['producedby'];
      //echo $_POST['review'];
 
-     	$stmt->execute();
-		 }
+     	// $stmt->execute();
+
+     	if($stmt->execute()):
+				echo "<script>location.href='movie.php'</script>";
+			else:
+				echo "<script>alert('". $stmt->error ."')</script>";
+		endif;
+			
+		}
 	}
 ?>
 <div class="row">
@@ -86,19 +94,16 @@
 	</div>
 </div>
 <div class="row">
-	<div class="col-sm-3 border">
-		<p>sidebar</p>
+	<div class="col-sm-3">
 		<?php include "../include/admin/nav.php"; ?>
 	</div>
-	<div class="col-sm-9 border">
-		<p>content</p>
-
+	<div class="col-sm-9">
 		<form method="post" class="form-horizontal" role="form" enctype="multipart/form-data">
 			<!-- Name -->
 			<div class="form-group">
 				<label for="name" class="col-sm-2 control-label required">Name</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="name" id="name">
+					<input type="text" class="form-control" name="name" id="name" required="true">
 				</div>
 			</div>
 			<!-- Category Name -->
@@ -118,21 +123,21 @@
 			<div class="form-group">
 				<label for="directedby" class="col-sm-2 control-label required">Directed By</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="directedby" id="directedby">
+					<input type="text" class="form-control" name="directedby" id="directedby" required="true">
 				</div>
 			</div>
 			<!-- Produced By -->
 			<div class="form-group">
 				<label for="producedby" class="col-sm-2 control-label required">Produced By</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="producedby" id="producedby">
+					<input type="text" class="form-control" name="producedby" id="producedby" required="true">
 				</div>
 			</div>
 			<!-- Movie Industry -->
 			<div class="form-group">
 				<label for="industry" class="col-sm-2 control-label required">Movie Industry</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" name="industry" id="industry">
+					<input type="text" class="form-control" name="industry" id="industry" required="true">
 				</div>
 			</div>
 			<!-- Review -->
