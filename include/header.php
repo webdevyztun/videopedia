@@ -10,8 +10,11 @@
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 
 	<link rel="stylesheet" href="css/style.css">
+
+	<!-- <link rel="stylesheet" type="text/css" href="font-awesome/css/font-awesome.min.css" /> -->
 </head>
 <body>
+	<script src="js/jquery.min.js"></script>
 	<div class="container">
 		<!-- <div class="row">
 			<div class="col-sm-12 header">
