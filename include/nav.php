@@ -41,17 +41,37 @@
                     </button>
                 </span>
             </div>
+
         </div>
         <!-- /.navbar-collapse -->
     </div>
     <!-- /.container -->
-</nav>
+</nav>       
+    <div id="result"></div>
 <script>
     $(document).ready(function(){
 
-        $("#btnsearch").click(function())
-        var vname = $("#q").val();
+        $("#btnsearch").click(function(){
+            var vname = $("#q").val();
 
-        alert(vname);
+            if(vname != '')
+            {
+                //alert(vname);
+                $.post("include/q.php", 
+                { 
+                    name:vname
+                },
+                function(response){ 
+                    //alert(response);
+
+                    $("#result").html(response).show();
+                
+                //$("#form")[0].reset();
+                });
+            }
+            
+
+        });
+        
     });
 </script>
