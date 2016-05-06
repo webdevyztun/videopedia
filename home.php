@@ -50,14 +50,28 @@
 					</span>		
 				</div>	
 				<div class="row">
-					<a class="col-sm-6 col-sm-offset-6" href="detail.php?id=<?php echo $row['id'];; ?>">Details</a>
+					<a id="dtl" class="col-sm-6 col-sm-offset-6 dtl-item" data-item-id="<?php echo $row['id']; ?>" href="detail.php?id=<?php echo $row['id']; ?>">Details</a>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div id="result1">r</div>
 	<?php
 		endwhile;
-	?>	
+	?>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.dtl-item').on('click', function() {
+				$.post("viewcount.php",
+					function(response)
+					{
+						$("#result1").html(response).show();
+					});			
+        	});
+		});
+
+		
+	</script>	
 <?php
 	include "include/footer.php";
 ?>
