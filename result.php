@@ -19,7 +19,7 @@
 			{
 				while ($row = $searchresult->fetch_assoc()):
 ?>
-				<div class="row border-btm">
+				<div class="row border-btm seh">
 					<div class="col-sm-12">
 						<span><a href="detail.php?id=<?php echo $row['id']; ?>"><?php echo $row['moviename']; ?></a> </span>
 					</div>
