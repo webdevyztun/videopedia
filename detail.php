@@ -58,6 +58,17 @@
 		</div>
 	<!-- </div> -->
 </div>
+	<!-- Insert View Count Start -->
+	<?php
+		$stmt = $mysqli->prepare("INSERT INTO view_count(username,moviename,count) VALUES (?,?,?)");
+     	$stmt->bind_param('sss',$login_user,$moviename,$cnt); 
+
+     	$moviename = $row['moviename'];
+     	$cnt = 1;
+ 
+     	$stmt->execute();
+	?>
+	<!-- Insert View Count End -->
 	<?php
 		endwhile;
 	?>	

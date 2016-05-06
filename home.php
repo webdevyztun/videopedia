@@ -50,14 +50,13 @@
 					</span>		
 				</div>	
 				<div class="row">
-					<!-- <a id="dtl" class="col-sm-6 col-sm-offset-6 dtl-item" data-item-id="<?php echo $row['id']; ?>" href="detail.php?id=<?php echo $row['id']; ?>">Details</a> -->
+					<a id="dtl" class="col-sm-6 col-sm-offset-6 dtl-item" data-item-id="<?php echo $row['id']; ?>" href="detail.php?id=<?php echo $row['id']; ?>">Details</a> 
 					
-					<a id="dtl" class="col-sm-6 col-sm-offset-6 dtl-item" data-item-id="<?php echo $row['id']; ?>" href="#">Details</a>
+					<!-- <a id="dtl" class="col-sm-6 col-sm-offset-6 dtl-item" data-item-id="<?php echo $row['id']; ?>" href="#">Details</a> -->
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="result1">r</div>
 	<?php
 		endwhile;
 	?>

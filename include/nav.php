@@ -33,15 +33,26 @@
                     </div>
                 </form>
             </div> -->
-            <div class="input-group col-md-12">
+            <!-- <div class="input-group col-md-12">
                 <input type="text" class="  search-query form-control" placeholder="Search" id="q" />
                 <span class="input-group-btn">
                     <button class="btn btn-danger" type="button" id="btnsearch" >
                         <span class=" glyphicon glyphicon-search"></span>
                     </button>
                 </span>
+            </div> -->
+            <div class="col-sm-4 col-md-4 pull-right">
+                <form action="result.php" class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="eg. movie name" name="q" id="q">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" type="submit" id="btnsearch">
+                                <i class="glyphicon glyphicon-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
-
         </div>
         <!-- /.navbar-collapse -->
     </div>
@@ -57,7 +68,7 @@
             if(vname != '')
             {
                 //alert(vname);
-                $.post("include/q.php", 
+                $.post("../q.php", 
                 { 
                     name:vname
                 },
